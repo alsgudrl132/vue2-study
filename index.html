@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .red {
+        color: red;
+      }
+      .font-bold {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <kossie-button></kossie-button>
+    </div>
+    <div id="app-1">
+      <kossie-button></kossie-button>
+    </div>
+
+    <script>
+      const HelloWorld = {
+        template: `
+          <div>Hello world</div>
+        `,
+      };
+
+      const KossieButton = {
+        template: `
+        <div>
+          {{name}} <br />
+          <hello-world></hello-world>
+          <button @click="changeText">Click</button>
+        </div>
+          `,
+        data() {
+          return { name: "kossie" };
+        },
+        components: {
+          "hello-world": HelloWorld,
+        },
+        methods: {
+          changeText() {
+            this.name = "kossie updated";
+          },
+        },
+      };
+
+      const app = new Vue({
+        el: "#app",
+        components: {
+          "kossie-button": KossieButton,
+        },
+      });
+      const app1 = new Vue({
+        el: "#app-1",
+        components: {
+          "kossie-button": KossieButton,
+        },
+      });
+    </script>
+  </body>
+</html>
